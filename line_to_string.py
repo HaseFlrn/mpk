@@ -5,10 +5,3 @@ def line_to_string(l):
     return "".join(l)
 
 
-def test_line_to_string():
-    l = ['X','X','X']
-    assert(line_to_string(l) == "XXX")
-
-if __name__ == "__main__":
-    test_line_to_string()
-    
