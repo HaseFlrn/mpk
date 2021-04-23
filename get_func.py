@@ -85,6 +85,8 @@ def get_manipulation_point(a,c):
     '''Erwartet ein zweidimensionales Array a und holt über den Input eine Zahl j und einen Charakter c.
         Bestimmt die erste freie Zeile in der Spalte j des Arrays a.
         Liefert das Zahlentupel (i, j).
+        [TODO] return statement aus der Exception
+        [TODO] input evtl. auslagern => Funktion durch simulierte Eingabe testbar
     '''
     try:
         j = int(input("Spieler " + c + " gib bitte eine Zahl zwischen 0 und 6 an, um deine Spalte auszuwählen: "))

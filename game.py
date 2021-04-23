@@ -22,7 +22,7 @@ def manipulate(a,c): #vielleicht als list comprehension umschreiben
     return new_a, i, j
 
 
-#vorübergehende Lösung
+#vorübergehende Lösung?
 def show_board(b):
     '''Erwartet ein zweidimensionales Array b.
         Gibt b als Spielfeld in der Konsole aus.
@@ -37,6 +37,7 @@ def game_round(b):
         Liefert 1, wenn Spieler O gewonnen hat.
         Liefert 2, wenn noch keiner gewonnen hat.
         Liefert -1 bei einem Unentschieden.
+        [TODO] Funktion verkürzen, indem Spielerwechsel parametergesteuert gemacht wird
     '''
     show_board(b)
     b, i, j = manipulate(b,"X")
@@ -56,7 +57,7 @@ def game_round(b):
         return -1
     return 2
 
-
+#Testfunktionen auslagern
 def test_generate_board():
     assert(generate_board(2,3) == [[' ', ' ', ' '], [' ', ' ', ' ']])
     assert(not generate_board(2,3) == [[' ', ' '], [' ', ' '], [' ', ' ']])
