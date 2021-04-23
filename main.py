@@ -6,8 +6,9 @@ def gameloop():
         oder es unentschieden steht.
     '''
     b = generate_board(6,7)
+    c = 'X'
     while True:
-        r = game_round(b)
+        r, c = game_round(b, c)
         if r == 0:
             print("X hat gewonnen")
             break

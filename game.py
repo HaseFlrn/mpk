@@ -1,7 +1,6 @@
 from get_func import get_manipulation_point
 from board_to_string import board_to_string
-from game_logic import player_o_wins
-from game_logic import player_x_wins
+from game_logic import player_wins
 from game_logic import board_full
 
 
@@ -30,32 +29,23 @@ def show_board(b):
     print(board_to_string(b))
 
 
-def game_round(b):
+def game_round(b,c):
     '''Erwartet ein zweidimensionales Array b.
         Spielt eine Runde des Spiels durch.
         Liefert 0, wenn Spieler X gewonnen hat.
         Liefert 1, wenn Spieler O gewonnen hat.
         Liefert 2, wenn noch keiner gewonnen hat.
         Liefert -1 bei einem Unentschieden.
-        [TODO] Funktion verkürzen, indem Spielerwechsel parametergesteuert gemacht wird
     '''
     show_board(b)
-    b, i, j = manipulate(b,"X")
-    if player_x_wins(b, i, j):
+    b, i, j = manipulate(b, c)
+    if player_wins(b, i, j, c):
         show_board(b)
-        return 0
+        return (0, 'X') if c == 'X' else (1, 'O')
     if board_full(b):
         show_board(b)
         return -1
-    show_board(b)
-    b, i, j = manipulate(b,"O")
-    if player_o_wins(b, i, j):
-        show_board(b)
-        return 1
-    if board_full(b):
-        show_board(b)
-        return -1
-    return 2
+    return (2, 'X') if c == 'O' else (2, 'O')
 
 #Testfunktionen auslagern
 def test_generate_board():
