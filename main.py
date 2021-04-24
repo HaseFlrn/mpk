@@ -1,6 +1,6 @@
 from game import generate_board
 from game import game_round
-from player_input import human_input
+from player_input import human_input, stupid_cpu
 
 def gameloop(player_x_input = human_input, player_o_input = human_input):
     '''Startet das Spiel und läuft so lange, bis ein Spieler gewonnen hat,
@@ -28,3 +28,4 @@ def gameloop(player_x_input = human_input, player_o_input = human_input):
 
 if __name__ == "__main__":
     gameloop()
+    #gameloop(human_input, stupid_cpu)

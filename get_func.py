@@ -83,7 +83,7 @@ def get_insertionpoint(l: list, i: int):
 
 
 
-def get_manipulation_point(board: list, player: str,get_player_input):
+def get_manipulation_point(board: list, player: str, get_player_input):
     '''Erwartet ein zweidimensionales Array a und einen Charakter c und eine Inputfunktion get_player_input.
         Bestimmt die erste freie Zeile in der Spalte col des Arrays board.
         Liefert das Zahlentupel (row, col).

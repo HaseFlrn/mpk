@@ -1,3 +1,6 @@
+from random import randint
+from time import sleep
+
 def human_input():
     '''Liefert einen Input aus der Konsole.'''
     col = input("Gib bitte eine Zahl zwischen 0 und 6 an, um deine Spalte auszuwählen: ")
@@ -10,7 +13,7 @@ def validate_input(board: list,col: int):
     '''
     return False if col > len(board) or col < 0 else True
 
-def convertable_to_int(player_input: str):
+def convertable_to_int(player_input):
     '''Erwartet einen String player_input.
         Überprüft, ob player_input in int konvertiert werden kann.
     '''
@@ -21,3 +24,9 @@ def convertable_to_int(player_input: str):
     except ValueError:
         print("Eingabe Fehlerhaft.")
     return check
+
+def stupid_cpu():
+    '''Liefert eine random Zahl zwischen 0 und 6'''
+    sleep(1)
+    return randint(0, 6)
+
