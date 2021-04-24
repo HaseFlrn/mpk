@@ -75,7 +75,7 @@ def get_insertionpoint(l: list, i: int):
         Liefert das hinterste Leerzeichen in der Liste. 
         Liefert -1, wenn kein Leerzeichen existiert.
     '''
-    if j < 0 :
+    if i < 0 :
         return -1
     if l[i] == ' ':
         return i
@@ -94,11 +94,11 @@ def get_manipulation_point(board: list, player: str,get_player_input):
     else:
         return get_manipulation_point(board, player, get_player_input)
         
-    if not validate_input(a,col):
+    if not validate_input(board,col):
         print("Eingabe fehlerhaft, versuchs nochmal.")
         return get_manipulation_point(board, player, get_player_input)
 
-    row = get_insertionpoint(get_column(board,col),len(get_column(a,col))-1)
+    row = get_insertionpoint(get_column(board,col),len(get_column(board,col))-1)
 
     if row == -1:
         print("Zeile voll, versuchs nochmal.")
