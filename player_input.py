@@ -1,14 +1,14 @@
 def human_input():
     '''Liefert einen Input aus der Konsole.'''
-    j = input("Gib bitte eine Zahl zwischen 0 und 6 an, um deine Spalte auszuwählen: ")
-    return j
+    col = input("Gib bitte eine Zahl zwischen 0 und 6 an, um deine Spalte auszuwählen: ")
+    return col
 
-def validate_input(a,j):
-    '''Erwartet ein Array a und eine Zahl j.
-        Liefert True, wenn die Stelle j in a existiert.
-        Liefert False, wenn die Stelle j in a nicht existiert.
+def validate_input(board: list,col: int):
+    '''Erwartet ein Array board und eine Zahl col.
+        Liefert True, wenn die Stelle col in board existiert.
+        Liefert False, wenn die Stelle col in board nicht existiert.
     '''
-    return False if j > len(a) or j < 0 else True
+    return False if col > len(board) or col < 0 else True
 
 def convertable_to_int(player_input: str):
     '''Erwartet einen String player_input.

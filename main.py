@@ -5,22 +5,23 @@ from player_input import human_input
 def gameloop(player_x_input = human_input, player_o_input = human_input):
     '''Startet das Spiel und läuft so lange, bis ein Spieler gewonnen hat,
         oder es unentschieden steht.
+        Optional können Inputfunktionen mitgegeben werden.
     '''
-    b = generate_board(6,7)
-    c = 'X'
-    while True:
-        print(c, "ist am Zug")
-        if c == 'O':
-            r, c = game_round(b, c, player_o_input)
+    board = generate_board(6,7)
+    player = 'X'
+    result = 2
+    while result == 2:        
+        if player == 'O':
+            result, player = game_round(board, player, player_o_input)
         else:
-            r, c = game_round(b, c, player_x_input)
-        if r == 0:
+            result, player = game_round(board, player, player_x_input)
+        if result == 0:
             print("X hat gewonnen")
             break
-        if r == 1:
+        if result == 1:
             print("O hat gewonnen")
             break
-        if r == -1:
+        if result == -1:
             print("unentschieden")
             break
         

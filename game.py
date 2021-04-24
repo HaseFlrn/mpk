@@ -4,48 +4,49 @@ from game_logic import player_wins
 from game_logic import board_full
 
 
-def generate_board(n,m):
+def generate_board(n: int,m: int):
     '''Erwartet eine Zahl n und eine Zahl m.
         Liefert ein zweidimensionales Array mit Ausprägung n Zeilen auf m Spalten.
     '''
     return [[" " for i in range(m)] for j in range(n)]
 
 
-def manipulate(a,c,player_input): #vielleicht als list comprehension umschreiben
-    '''Erwartet ein zweidimensionales Array a und einen Charakter c.
-        Liefert das an Stelle [i][j] mit c manipulierte Array a.
+def manipulate(board: list, player: str, player_input): #vielleicht als list comprehension umschreiben
+    '''Erwartet ein zweidimensionales Array board und einen Charakter player.
+        Liefert das an Stelle [row][col] mit player manipulierte Array board.
     '''
-    new_a = a.copy() 
-    i,j = get_manipulation_point(a,c,player_input)
-    new_a[i][j] = c
-    return new_a, i, j
+    new_board = board.copy() 
+    row,col = get_manipulation_point(board,player,player_input)
+    new_board[row][col] = player
+    return new_board, row, col 
 
 
 #vorübergehende Lösung?
-def show_board(b):
-    '''Erwartet ein zweidimensionales Array b.
-        Gibt b als Spielfeld in der Konsole aus.
+def show_board(board: list):
+    '''Erwartet ein zweidimensionales Array board.
+        Gibt board als Spielfeld in der Konsole aus.
     '''
-    print(board_to_string(b))
+    print(board_to_string(board))
 
 
-def game_round(b,c,player_input):
-    '''Erwartet ein zweidimensionales Array b.
+def game_round(board: list, player: str, player_input):
+    '''Erwartet ein zweidimensionales Array board, einen Charakter player und eine Inputfunktion player_input.
         Spielt eine Runde des Spiels durch.
         Liefert 0, wenn Spieler X gewonnen hat.
         Liefert 1, wenn Spieler O gewonnen hat.
         Liefert 2, wenn noch keiner gewonnen hat.
         Liefert -1 bei einem Unentschieden.
     '''
-    show_board(b)
-    b, i, j = manipulate(b, c, player_input)
-    if player_wins(b, i, j, c):
-        show_board(b)
-        return (0, 'X') if c == 'X' else (1, 'O')
-    if board_full(b):
-        show_board(b)
-        return -1
-    return (2, 'X') if c == 'O' else (2, 'O')
+    show_board(board)
+    print(player, "ist am Zug")
+    board, row, col = manipulate(board, player, player_input)
+    if player_wins(board, row, col, player):
+        show_board(board)
+        return (0, 'X') if player == 'X' else (1, 'O')
+    if board_full(board):
+        show_board(board)
+        return -1, ''
+    return (2, 'X') if player == 'O' else (2, 'O')
 
 #Testfunktionen auslagern
 def test_generate_board():
