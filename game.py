@@ -11,12 +11,12 @@ def generate_board(n,m):
     return [[" " for i in range(m)] for j in range(n)]
 
 
-def manipulate(a,c): #vielleicht als list comprehension umschreiben
+def manipulate(a,c,player_input): #vielleicht als list comprehension umschreiben
     '''Erwartet ein zweidimensionales Array a und einen Charakter c.
         Liefert das an Stelle [i][j] mit c manipulierte Array a.
     '''
     new_a = a.copy() 
-    i,j = get_manipulation_point(a,c)
+    i,j = get_manipulation_point(a,c,player_input)
     new_a[i][j] = c
     return new_a, i, j
 
@@ -29,7 +29,7 @@ def show_board(b):
     print(board_to_string(b))
 
 
-def game_round(b,c):
+def game_round(b,c,player_input):
     '''Erwartet ein zweidimensionales Array b.
         Spielt eine Runde des Spiels durch.
         Liefert 0, wenn Spieler X gewonnen hat.
@@ -38,7 +38,7 @@ def game_round(b,c):
         Liefert -1 bei einem Unentschieden.
     '''
     show_board(b)
-    b, i, j = manipulate(b, c)
+    b, i, j = manipulate(b, c, player_input)
     if player_wins(b, i, j, c):
         show_board(b)
         return (0, 'X') if c == 'X' else (1, 'O')

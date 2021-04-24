@@ -1,3 +1,4 @@
+from player_input import convertable_to_int, validate_input
 
 def get_row(a, i):
     '''Erwartet ein zweidimensionales Array a und eine Zahl i.
@@ -81,24 +82,25 @@ def get_insertionpoint(l,j):
     return get_insertionpoint(l,j-1)
 
 
-def get_manipulation_point(a,c):
-    '''Erwartet ein zweidimensionales Array a und holt über den Input eine Zahl j und einen Charakter c.
+
+def get_manipulation_point(a,c,get_player_input):
+    '''Erwartet ein zweidimensionales Array a und einen Charakter c und eine Inputfunktion get_player_input.
         Bestimmt die erste freie Zeile in der Spalte j des Arrays a.
         Liefert das Zahlentupel (i, j).
-        [TODO] return statement aus der Exception
-        [TODO] input evtl. auslagern => Funktion durch simulierte Eingabe testbar
     '''
-    try:
-        j = int(input("Spieler " + c + " gib bitte eine Zahl zwischen 0 und 6 an, um deine Spalte auszuwählen: "))
-    except ValueError:
-        print("Eingabe Falsch! Versuchs nochmal.")
-        return get_manipulation_point(a,c)
-    if j > len(a) or j < 0: 
-        print("Eingabe Falsch! Versuchs nochmal.")
-        return get_manipulation_point(a,c)
+    j = get_player_input()
+    if convertable_to_int(j):
+        j = int(j)
+    else:
+        return get_manipulation_point(a, c, get_player_input)
+        
+    if not validate_input(a,j):
+        return get_manipulation_point(a, c, get_player_input)
+
     i = get_insertionpoint(get_column(a,j),len(get_column(a,j))-1)
+
     if i == -1:
         print("Zeile voll, versuchs nochmal.")
-        return get_manipulation_point(a,c)
+        return get_manipulation_point(a,c, get_player_input)
     return i, j
 
