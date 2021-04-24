@@ -47,18 +47,3 @@ def game_round(board: list, player: str, player_input):
         show_board(board)
         return -1, ''
     return (2, 'X') if player == 'O' else (2, 'O')
-
-#Testfunktionen auslagern
-def test_generate_board():
-    assert(generate_board(2,3) == [[' ', ' ', ' '], [' ', ' ', ' ']])
-    assert(not generate_board(2,3) == [[' ', ' '], [' ', ' '], [' ', ' ']])
-
-# def test_manipulate():
-#     a1 = [['X','X',' '],['X','X','X'],['X','O','O']]
-#     print("Erwartet 2 als Input, sonst erneute Eingabe: ")
-#     assert(manipulate(a1,'X') == ([['X','X','X'],['X','X','X'],['X','O','O']], 0, 2))
-
-
-if __name__ == "__main__":
-    test_generate_board()
-    # test_manipulate()
