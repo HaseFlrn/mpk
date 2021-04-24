@@ -3,5 +3,3 @@ def any_of(a, f):
       Liefert True, wenn f(el) == True für irgend ein el in a gilt.
   '''
   return any(map(f,a))
-
-

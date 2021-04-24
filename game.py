@@ -52,12 +52,12 @@ def test_generate_board():
     assert(generate_board(2,3) == [[' ', ' ', ' '], [' ', ' ', ' ']])
     assert(not generate_board(2,3) == [[' ', ' '], [' ', ' '], [' ', ' ']])
 
-def test_manipulate():
-    a1 = [['X','X',' '],['X','X','X'],['X','O','O']]
-    print("Erwartet 2 als Input, sonst erneute Eingabe: ")
-    assert(manipulate(a1,'X') == ([['X','X','X'],['X','X','X'],['X','O','O']], 0, 2))
+# def test_manipulate():
+#     a1 = [['X','X',' '],['X','X','X'],['X','O','O']]
+#     print("Erwartet 2 als Input, sonst erneute Eingabe: ")
+#     assert(manipulate(a1,'X') == ([['X','X','X'],['X','X','X'],['X','O','O']], 0, 2))
 
 
 if __name__ == "__main__":
     test_generate_board()
-    test_manipulate()
+    # test_manipulate()
