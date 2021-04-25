@@ -26,9 +26,9 @@ def gameloop(player_x_input = human_input, player_o_input = human_input):
             break
         
 
-
-gamemode = {'1': (human_input,human_input) , '2': (human_input,stupid_cpu)}
-print("Wähle einen Spielmodus.")
-user_selection = input("1: 1v1 oder 2: 1vCPU")
-player_x_input,player_o_input = gamemode[user_selection] 
-gameloop(player_x_input,player_o_input)
+if __name__ == "__main__":
+    gamemode = {'1': (human_input,human_input) , '2': (human_input,stupid_cpu)}
+    print("Wähle einen Spielmodus.")
+    user_selection = input("1: 1v1 oder 2: 1vCPU")
+    player_x_input,player_o_input = gamemode[user_selection] 
+    gameloop(player_x_input,player_o_input)
