@@ -58,13 +58,14 @@ def test_get_insertionpoint():
     l2 = ['X','X','X']
     assert(get_insertionpoint(l2,len(l2)-1) == -1)
 
-# def test_get_manipulation_point():
-#     a1 = [['X','X',' '],['X','X','X'],['X','O','O']]
-#     print("Bitte 2 eingeben, um das korrekte Ergebnis zu rehalten, sonst dauerhafte wiederholung: ")
-#     assert(get_manipulation_point(a1,'X') == (0, 2))
-#     a2 = [[' ','X',' '],['X','X','X'],['X','O','O']]
-#     print("Bitte 0 oder 2 eingeben, um das korrekte Ergebnis zu rehalten, sonst dauerhafte wiederholung: ")
-#     assert(get_manipulation_point(a2,'X') == (0, 2) or get_manipulation_point(a2,'X') == (0, 0))
+def test_get_manipulation_point():
+    a1 = [['X','X',' '],['X','X','X'],['X','O','O']]
+    moves_x = [2,2,0]
+    moves_x = iter(moves_x)
+    assert(get_manipulation_point(a1,'X', lambda: next(moves_x)) == (0, 2))
+    a2 = [[' ','X',' '],['X','X','X'],['X','O','O']]
+    assert(get_manipulation_point(a2,'X', lambda: next(moves_x)) == (0, 2))
+    assert(get_manipulation_point(a2,'X', lambda: next(moves_x)) == (0, 0))
 
 def test_get_functions():
     test_get_row()
@@ -77,7 +78,7 @@ def test_get_functions():
     test_get_diag2()
     test_get_all_lines()
     test_get_insertionpoint()
-#    test_get_manipulation_point()
+    test_get_manipulation_point()
 
 if __name__ == "__main__":
     test_get_functions()

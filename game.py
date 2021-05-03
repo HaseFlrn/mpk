@@ -1,7 +1,6 @@
-from get_func import get_manipulation_point
-from board_to_string import board_to_string
-from game_logic import player_wins
-from game_logic import board_full
+from get_func import get_manipulation_point 
+from game_logic import player_wins, board_full
+from helper_func import show_board
 
 
 def generate_board(n: int,m: int):
@@ -11,22 +10,14 @@ def generate_board(n: int,m: int):
     return [[" " for i in range(m)] for j in range(n)]
 
 
-def manipulate(board: list, player: str, player_input): #vielleicht als list comprehension umschreiben
+def manipulate(board: list, player: str, player_input):
     '''Erwartet ein zweidimensionales Array board und einen Charakter player.
-        Liefert das an Stelle [row][col] mit player manipulierte Array board.
+        Liefert das an Stelle board[row][col] mit player manipulierte Array board.
     '''
     new_board = board.copy() 
     row,col = get_manipulation_point(board,player,player_input)
     new_board[row][col] = player
     return new_board, row, col 
-
-
-#vorübergehende Lösung?
-def show_board(board: list):
-    '''Erwartet ein zweidimensionales Array board.
-        Gibt board als Spielfeld in der Konsole aus.
-    '''
-    print(board_to_string(board))
 
 
 def game_round(board: list, player: str, player_input):

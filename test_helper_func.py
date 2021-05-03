@@ -1,7 +1,4 @@
-#helper_func sind board_to_string, line_to_string und any_of
-from board_to_string import board_to_string
-from line_to_string import line_to_string
-from any_of import any_of
+from helper_func import board_to_string, line_to_string, any_of
 
 def test_line_to_string():
     l = ['X','X','X']

@@ -6,7 +6,7 @@ def human_input():
     col = input("Gib bitte eine Zahl zwischen 0 und 6 an, um deine Spalte auszuwählen: ")
     return col
 
-def validate_input(board: list,col: int):
+def input_in_bounds(board: list,col: int):
     '''Erwartet ein Array board und eine Zahl col.
         Liefert True, wenn die Stelle col in board existiert.
         Liefert False, wenn die Stelle col in board nicht existiert.
@@ -22,11 +22,11 @@ def convertable_to_int(player_input):
         int(player_input)
         check = True
     except ValueError:
-        print("Eingabe Fehlerhaft.")
+        print("Eingabe Fehlerhaft! Bitte eine Zahl.")
     return check
 
 def stupid_cpu():
     '''Liefert eine random Zahl zwischen 0 und 6'''
-    sleep(1)
+    sleep(0.5)
     return randint(0, 6)
 

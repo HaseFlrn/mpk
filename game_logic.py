@@ -1,5 +1,4 @@
-from line_to_string import line_to_string
-from any_of import any_of
+from helper_func import any_of, line_to_string
 from get_func import get_all_lines
 from get_func import get_row
 
@@ -7,7 +6,7 @@ def contains_combo(line: list, player: str):
     '''Erwartet eine Liste line und einen Charakter player.
         Liefert True, wenn player viermal aufeinander-folgend in line ist.
     '''
-    return line_to_string(line).find(line_to_string([player for i in range(4)])) != -1
+    return line_to_string(line).find(player*4) != -1
 
 
 def player_wins(board: list, row: int, col: int, player : str):
@@ -32,7 +31,7 @@ def player_o_wins(board: list, row: int, col: int):
 
 def board_full(board: list):
     '''Erwartet ein zweidimensionales Array board.
-        Liefert True, wenn die 0-te Zeile gefüllt ist.
+        Liefert True, wenn die 0-te Zeile und somit das Spielfeld komplett gefüllt ist.
     '''
     return line_to_string(get_row(board,0)).find(" ") == -1
 
