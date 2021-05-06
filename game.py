@@ -12,7 +12,7 @@ def generate_board(n: int,m: int):
 
 def manipulate(board: list, player: str, player_input):
     '''Erwartet ein zweidimensionales Array board und einen Charakter player.
-        Liefert das an Stelle board[row][col] mit player manipulierte Array board.
+        Liefert ein an Stelle board[row][col] mit player manipulierte Array new_board, sowie die Koordinaten row,col.
     '''
     new_board = board.copy() 
     row,col = get_coordinates_for_manipulation(board,player,player_input)

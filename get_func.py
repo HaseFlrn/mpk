@@ -16,7 +16,7 @@ def get_column(a: list, j: int):
 
 def flip_row(a: list, i: int):
     '''Erwartet ein zweidimensionales Array a und eine Zahl i.
-        Liefert das Array um die Y-Achse gespiegelt zurück.
+        Liefert die i-te Reihe des Arrays gespiegelt.
     '''
     l = get_row(a,i)
     return [l[len(l)-1-j] for j in range(len(l))]
@@ -31,7 +31,7 @@ def flip(a: list):
 
 def prep_diag(a: list, i: int, j: int):
     '''Erwartet ein zweidimensionales Array a, eine Zahl i und eine Zahl j.
-        Liefert i und j in der tiefsten Ebene des Arrays.
+        Liefert i und j in der tiefsten Zeile der Diagonalen im Array a.
     '''
     #verschiebt die gegebene Position so lange diagonal um 1, bis man an einen Rand von a gelangt
     if i+1 < len(a) and j+1 < len(a[i]):
@@ -39,9 +39,9 @@ def prep_diag(a: list, i: int, j: int):
     return i,j
 
 
-def calc_diag(a: list, i: int, j: int):
+def calc_diag(a: list, i: int, j: int): #calc_diag und get_diag1 gesondert, damit im rekursiven nicht immer wieder prep_diag ausgeführt wird
     '''Erwartet ein zweidimensionales Array a, eine Zahl i und eine Zahl j.
-        Liefert die Diagonale von rechts unten nach links oben, in der a[i][j] liegt.
+        Bestimmt die Diagonale von rechts unten nach links oben, in der a[i][j] liegt.
     '''
     if i == 0 or j == 0:
         return [a[i][j]]
@@ -72,8 +72,8 @@ def get_all_lines(a: list, i: int, j: int):
 
 def get_depth(l: list, i: int):
     '''Erwartet eine Liste l und eine Zahl i.
-        Liefert das hinterste Leerzeichen in der Liste (später im Spielfeld das tiefste freie Feld). 
-        Liefert -1, wenn kein Leerzeichen existiert.
+        Liefert das hinterste Leerzeichen in der Liste. -> später im Spielfeld das tiefste freie Feld
+        Liefert -1, wenn kein Leerzeichen existiert. -> Spalte bereits gefüllt
     '''
     if i < 0 :
         return -1
@@ -84,7 +84,7 @@ def get_depth(l: list, i: int):
 
 
 def get_coordinates_for_manipulation(board: list, player: str, get_player_input):
-    '''Erwartet ein zweidimensionales Array a und einen Charakter player und eine Inputfunktion get_player_input.
+    '''Erwartet ein zweidimensionales Array board und einen Charakter player und eine Inputfunktion get_player_input.
         Bestimmt die erste freie Zeile in der Spalte col des Arrays board.
         Liefert das Zahlentupel (row, col).
     '''
