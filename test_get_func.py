@@ -52,13 +52,13 @@ def test_get_all_lines():
     a1 = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
     assert(get_all_lines(a1,0,0) == [[1, 5, 9, 13], [1, 2, 3, 4], [16, 11, 6, 1], [1]])
 
-def test_get_insertionpoint():
+def test_get_depth():
     l1 = [' ','X','X']
     assert(get_insertionpoint(l1,len(l1)-1) == 0)
     l2 = ['X','X','X']
     assert(get_insertionpoint(l2,len(l2)-1) == -1)
 
-def test_get_manipulation_point():
+def test_get_coordinates_for_manipulation():
     a1 = [['X','X',' '],['X','X','X'],['X','O','O']]
     moves_x = [2,2,0]
     moves_x = iter(moves_x)
@@ -76,8 +76,7 @@ def test_get_functions():
     test_flip_row()
     test_flip()
     test_get_diag2()
-    test_get_all_lines()
-    test_get_insertionpoint()
+    test_get_depth()
     test_get_manipulation_point()
 
 if __name__ == "__main__":

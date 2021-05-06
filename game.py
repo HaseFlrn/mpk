@@ -1,4 +1,4 @@
-from get_func import get_manipulation_point 
+from get_func import get_coordinates_for_manipulation 
 from game_logic import player_wins, board_full
 from helper_func import show_board
 
@@ -15,7 +15,7 @@ def manipulate(board: list, player: str, player_input):
         Liefert das an Stelle board[row][col] mit player manipulierte Array board.
     '''
     new_board = board.copy() 
-    row,col = get_manipulation_point(board,player,player_input)
+    row,col = get_coordinates_for_manipulation(board,player,player_input)
     new_board[row][col] = player
     return new_board, row, col 
 
